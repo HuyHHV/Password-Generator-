@@ -9,9 +9,9 @@ var length
 // Write password to the #password input
 function generatePassword() {
   var length
-  //Password criteria  
+  
   window.alert ("Choose your password criteria");
-
+  //Password criteria  
   function condition() {
     length = window.prompt ("Please choose your password's length (>8, <128 letters): ");
     if (!length) {
@@ -45,7 +45,9 @@ function writePassword() {
   var passwordText = document.querySelector("#password");
   console.log (password);
   passwordText.value = password;
-  return;
+  // reset password for next use
+  password="" 
+  return
 }
 
 // Add event listener to generate button
