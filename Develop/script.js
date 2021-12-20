@@ -12,9 +12,10 @@ function generatePassword() {
   var length
   
   window.alert ("Choose your password criteria");
-  //Ask Users about Password criteria  
+  
   var i= 0;
   while (i == 0) { 
+   //Ask Users about Password length 
   length = window.prompt ("Please choose your password's length (>8, <128 letters): ");
    // If user pressed Cancel, immediately end function
   if (!length) {
@@ -27,15 +28,19 @@ function generatePassword() {
     else {i=i+1};
   }
   
-
-  var alpha = window.confirm("Do you want your password contains aphabet letters?");
-  if (alpha) {char=char + alphabet};
-  var num = window.confirm("Do you want your password contains numbers?");
-  if (num) {char = char + numbers};
+  //Password's criteria
+  function add(input,crit) {
+  if (input) {char=char+crit};
+  return;
+  };
+  var alpha = window.confirm("Do you want your password contains lowercase letters?");
+  add(alpha,alphabet);
   var upper = window.confirm("Do you want your passwords contains uppercase letters?")
-  if (upper) {char= char +alphabet.toUpperCase()};
+  add(upper,alphabet);
+  var num = window.confirm("Do you want your password contains numbers?");
+  add(num,numbers);
   var chac = window.confirm("Do you want your passwords contains speacial characters?")
-  if (chac) {char=char + characters}
+  add(chac,characters);
 
   for (var i = 0; i <= length; i++) {
     var randomNumber = Math.floor(Math.random() * char.length);
@@ -47,7 +52,6 @@ function generatePassword() {
 function writePassword() {
   generatePassword();
   var passwordText = document.querySelector("#password");
-  console.log (password);
   passwordText.value = password;
   // reset password for next use
   password="" 
