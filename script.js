@@ -2,6 +2,7 @@
 var generateBtn = document.querySelector("#generate");
 var numbers = "012345678";
 var alphabet = "abcdefabcdefghijklmnopqrstuvwxyz";
+var cap = alphabet.toUpperCase();
 var characters ="!@#$%^&*()_+~`|}{[]\:;?><,./-=";
 var char =""
 var password ="";
@@ -31,17 +32,21 @@ function generatePassword() {
   
   //Password's criteria
   function add(input,crit) {
-   if (input) {char=char+crit};
-    return;
+   if (input) {char+=crit};
    };
-  var alpha = window.confirm("Do you want your password contains lowercase letters?");
-  add(alpha,alphabet);
-  var upper = window.confirm("Do you want your passwords contains uppercase letters?")
-  add(upper,alphabet);
-  var num = window.confirm("Do you want your password contains numbers?");
-  add(num,numbers);
-  var chac = window.confirm("Do you want your passwords contains speacial characters?")
-  add(chac,characters);
+    console.log(char);
+    var alpha = window.confirm("Do you want your password contains lowercase letters?");
+    add(alpha,alphabet);
+    console.log(char);
+    var upper = window.confirm("Do you want your passwords contains uppercase letters?")
+    add(upper,cap);
+    console.log(char);
+    var num = window.confirm("Do you want your password contains numbers?");
+    add(num,numbers);
+    console.log(char);
+    var chac = window.confirm("Do you want your passwords contains speacial characters?")
+    add(chac,characters);
+    console.log(char);
 
   //  Generate password
   for (var i = 0; i <= length; i++) {
@@ -55,8 +60,9 @@ function writePassword() {
   generatePassword();
   var passwordText = document.querySelector("#password");
   passwordText.value = password;
-  // reset password for next use
+  // reset variable for next use
   password="" 
+  char=""
   return
 }
 
