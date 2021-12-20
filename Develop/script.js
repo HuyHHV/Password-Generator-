@@ -7,22 +7,22 @@ var char =""
 var password ="";
 var length
 // Write password to the #password input
-function genPass() {
-  window.alert ("Choose your password criteria")
+function generatePassword() {
+  var length
+  //Password criteria  
+  window.alert ("Choose your password criteria");
 
   function condition() {
-    var length = window.prompt ("Please choose your password's length (>8, <128 letters)");
-
-    if ((length<=8 || length>=128 || isNaN(length))) {
+    length = window.prompt ("Please choose your password's length (>8, <128 letters): ");
+    if (!length) {
+      return;}
+    else if ((length<=8 || length>=128 || isNaN(length))) {
       window.alert ("wrong condition, please try again!");
       condition()
       }
-    else if (!length) {
-      return;
     }
-  }
-
-condition()
+  
+  condition()
 
   var alpha = window.confirm("Do you want your password contains aphabet letters?");
   if (alpha) {char=char + alphabet};
@@ -37,17 +37,16 @@ condition()
     var randomNumber = Math.floor(Math.random() * char.length);
     password += char.substring(randomNumber, randomNumber +1);
   }
-
-  console.log (password)
-
+  return password;
 }
 
-genPass()
-// function writePassword() {
-//   var password = generatePassword();
-//   var passwordText = document.querySelector("#password");
-//   passwordText.value = password;
-// }
+function writePassword() {
+  generatePassword();
+  var passwordText = document.querySelector("#password");
+  console.log (password);
+  passwordText.value = password;
+  return;
+}
 
-// // Add event listener to generate button
-// generateBtn.addEventListener("click", writePassword);
+// Add event listener to generate button
+generateBtn.addEventListener("click", writePassword);
