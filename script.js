@@ -1,9 +1,17 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-var numbers = "012345678";
-var alphabet = "abcdefabcdefghijklmnopqrstuvwxyz";
-var cap = alphabet.toUpperCase();
-var characters ="!@#$%^&*()_+~`|}{[]\:;?><,./-=";
+var numberic = {
+  msg: "numberic letters",
+  content: "012345678"}
+var lowercase = {
+  content:"abcdefabcdefghijklmnopqrstuvwxyz",
+  msg: "lowercase letter"}
+var uppercase = {
+  content: lowercase.content.toUpperCase(),
+  msg: "uppercase letter"}
+var special_characters = {
+  content: "!@#$%^&*()_+~`|}{[]\:;?><,./-=",
+  msg: "speacial characters"}
 var char =""
 var password ="";
 var length
@@ -23,7 +31,7 @@ function generatePassword() {
     return;
   };
 
-  // If password length is not satisfy condition, ask users to try again
+  // If password's length is not satisfy condition, ask users to try again
   if ((length<=8 || length>=128 || isNaN(length))) {
       window.alert ("wrong condition, please try again!");
       } 
@@ -31,22 +39,15 @@ function generatePassword() {
   }
   
   //Password's criteria
-  function add(input,crit) {
-   if (input) {char+=crit};
-   };
-    console.log(char);
-    var alpha = window.confirm("Do you want your password contains lowercase letters?");
-    add(alpha,alphabet);
-    console.log(char);
-    var upper = window.confirm("Do you want your passwords contains uppercase letters?")
-    add(upper,cap);
-    console.log(char);
-    var num = window.confirm("Do you want your password contains numbers?");
-    add(num,numbers);
-    console.log(char);
-    var chac = window.confirm("Do you want your passwords contains speacial characters?")
-    add(chac,characters);
-    console.log(char);
+  function add(crit) {
+    var input = window.confirm("Do you want your password contains "+ crit.msg);
+   if (input) {char+=crit.content};
+     };
+  
+  add(lowercase);
+  add(uppercase);
+  add(numberic);
+  add(special_characters);
 
   //  Generate password
   for (var i = 0; i <= length; i++) {
