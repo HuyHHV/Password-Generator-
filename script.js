@@ -17,7 +17,6 @@ var password ="";
 var length
 
 function generatePassword() {
-  var length
   
   window.alert ("Choose your password criteria");
   
