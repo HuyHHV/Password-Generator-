@@ -24,7 +24,7 @@ function passwordLength() {
     length = window.prompt ("Please choose your password's length (>8, <128 letters): ");
 
    // If user pressed Cancel, immediately end function
-    if (!length) {
+   if (!length) {
     return;
     };
 
@@ -55,7 +55,18 @@ function generatePassword() {
   
   passwordLength ();
   
+// If user pressed Cancel, immediately end function
+  if (!length) {
+    return;
+    };
+
+  
   chacTypes();
+  
+  //  Add message when no character type was chosen
+  if (char == "") {
+    alert("No character type was chosen, please press 'Generate Password' to try again'")
+  };
 
   //  Generate password
   for (var i = 0; i <= length; i++) {
